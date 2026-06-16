@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BHD Asia — Marketing Plan 2026 | TechNext</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --navy: #0A1628;
+    --gold: #C9A84C;
+    --bg: #F8F9FB;
+    --white: #FFFFFF;
+  }
+  body { background-color: var(--bg); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  .tab-active { border-bottom: 3px solid var(--gold); color: var(--gold); font-weight: 700; }
+  .tab-inactive { border-bottom: 3px solid transparent; color: #6B7280; }
+  .tab-inactive:hover { color: var(--navy); border-bottom-color: #E5E7EB; }
+  .page { display: none; }
+  .page.active { display: block; }
+  .gold-text { color: var(--gold); }
+  .navy-bg { background-color: var(--navy); }
+  .gold-bg { background-color: var(--gold); }
+  .card-shadow { box-shadow: 0 2px 12px rgba(10,22,40,0.08); }
+  .step-card { transition: box-shadow 0.2s; }
+  .step-card:hover { box-shadow: 0 4px 20px rgba(10,22,40,0.12); }
+  .content-type-card { cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+  .content-type-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(10,22,40,0.14); }
+  /* Modal */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,22,40,0.7); z-index: 9999; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.open { display: flex; }
+  .modal-card { background: white; border-radius: 16px; width: 100%; max-width: 440px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalIn 0.2s ease; }
+  @keyframes modalIn { from { opacity:0; transform: scale(0.94) translateY(10px); } to { opacity:1; transform: scale(1) translateY(0); } }
+  .platform-instagram { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+  .platform-tiktok { background: #010101; }
+  .platform-facebook { background: #1877F2; }
+  /* Calendar */
+  .cal-cell { min-height: 80px; vertical-align: top; }
+  .cal-post-dot { font-size: 0.75rem; line-height: 1.3; }
+  .view-post-btn { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; }
+  .cal-row { cursor: pointer; transition: opacity 0.15s; }
+  .cal-row:hover { opacity: 0.85; }
+  /* Timeline */
+  .timeline-line { position: relative; }
+  .timeline-line::before { content: ''; position: absolute; top: 20px; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--gold), var(--navy)); border-radius: 2px; }
+  /* Sections */
+  .section-label { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  /* Print */
+  @media print {
+    .no-print { display: none !important; }
+    .page { display: block !important; page-break-after: always; }
+    .modal-overlay { display: none !important; }
+  }
+  /* Accordion */
+  .accordion-content { display: none; }
+  .accordion-content.open { display: block; }
+  /* Responsive table */
+  .table-wrap { overflow-x: auto; }
+  /* Scrollbar for modal */
+  .modal-card::-webkit-scrollbar { width: 5px; }
+  .modal-card::-webkit-scrollbar-track { background: #f1f1f1; }
+  .modal-card::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ========== HEADER ========== -->
+<header class="navy-bg sticky top-0 z-50 no-print">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full gold-bg flex items-center justify-center">
+        <span class="text-white font-bold text-sm">B</span>
+      </div>
+      <span class="text-white font-semibold text-sm tracking-wide">BHD Asia — Marketing Plan 2026</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-gray-400 text-xs hidden sm:block">Prepared by TechNext</span>
+      <button onclick="window.print()" class="text-xs px-3 py-1.5 rounded-lg border border-gray-600 text-gray-300 hover:border-yellow-400 hover:text-yellow-400 transition-colors flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print
+      </button>
+    </div>
+  </div>
+  <!-- Tab Navigation -->
+  <div class="max-w-6xl mx-auto px-4 border-t border-gray-700">
+    <nav class="flex gap-1 overflow-x-auto">
+      <button onclick="showPage('overview')" id="tab-overview" class="tab-active text-sm px-4 py-3 whitespace-nowrap transition-colors">Overview</button>
+      <button onclick="showPage('website')" id="tab-website" class="tab-inactive text-sm px-4 py-3 whitespace-nowrap transition-colors">Website Plan</button>
+      <button onclick="showPage('social')" id="tab-social" class="tab-inactive text-sm px-4 py-3 whitespace-nowrap transition-colors">Social Media</button>
+      <button onclick="showPage('campaigns')" id="tab-campaigns" class="tab-inactive text-sm px-4 py-3 whitespace-nowrap transition-colors">Campaigns &amp; Ads</button>
+      <button onclick="showPage('brief')" id="tab-brief" class="tab-inactive text-sm px-4 py-3 whitespace-nowrap transition-colors">Client Brief</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== PAGE 1: OVERVIEW ========== -->
+<section id="page-overview" class="page active max-w-6xl mx-auto px-4 py-10">
+
+  <!-- Hero -->
+  <div class="text-center mb-12">
+    <div class="inline-block px-4 py-1 rounded-full text-xs font-semibold mb-4 text-white gold-bg tracking-widest uppercase">Marketing Plan</div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mb-3" style="color:var(--navy)">BHD Asia</h1>
+    <p class="text-xl sm:text-2xl font-light text-gray-500 mb-1">Marketing Plan 2026</p>
+    <p class="text-sm text-gray-400 mt-2">Isabelle Claus Teixeira · Singapore TRE Trainer · Prepared by TechNext</p>
+  </div>
+
+  <!-- 3 Goal Cards -->
+  <div class="mb-12">
+    <h2 class="text-lg font-bold mb-1" style="color:var(--navy)">Our Three Goals</h2>
+    <p class="text-sm text-gray-500 mb-5">Everything we do connects back to one of these three goals.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border-t-4" style="border-color:var(--gold)">
+        <div class="mb-3" style="color:var(--gold)"><svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3 class="font-bold text-base mb-1" style="color:var(--navy)">Get Found on Google</h3>
+        <p class="text-sm text-gray-600">Make the website show up when people search for TRE in Singapore.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border-t-4" style="border-color:var(--navy)">
+        <div class="mb-3" style="color:var(--navy)"><svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h3 class="font-bold text-base mb-1" style="color:var(--navy)">Grow Social Media</h3>
+        <p class="text-sm text-gray-600">Post consistently on Instagram, TikTok, and Facebook to build an audience.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border-t-4" style="border-color:#7C3AED">
+        <div class="mb-3" style="color:#7C3AED"><svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg></div>
+        <h3 class="font-bold text-base mb-1" style="color:var(--navy)">Fill the Workshops</h3>
+        <p class="text-sm text-gray-600">Run campaigns to get people registered for TRE training and retreats.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="mb-12">
+    <h2 class="text-lg font-bold mb-1" style="color:var(--navy)">What We're Doing — The Plan</h2>
+    <p class="text-sm text-gray-500 mb-8">Four phases across the year. Each phase has a clear focus.</p>
+
+    <div class="relative timeline-line grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0">
+      <div class="relative flex flex-col items-center text-center px-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mb-3" style="background:var(--gold)">1</div>
+        <div class="bg-white rounded-xl p-4 card-shadow w-full">
+          <div class="text-xs font-bold uppercase tracking-wide mb-1" style="color:var(--gold)">Phase 1</div>
+          <div class="text-sm font-bold mb-1" style="color:var(--navy)">June</div>
+          <p class="text-xs text-gray-600">Fix the website + start posting on all 3 platforms</p>
+        </div>
+      </div>
+      <div class="relative flex flex-col items-center text-center px-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mb-3" style="background:var(--navy)">2</div>
+        <div class="bg-white rounded-xl p-4 card-shadow w-full">
+          <div class="text-xs font-bold uppercase tracking-wide mb-1" style="color:var(--navy)">Phase 2</div>
+          <div class="text-sm font-bold mb-1" style="color:var(--navy)">July</div>
+          <p class="text-xs text-gray-600">Run paid ads + build the email list</p>
+        </div>
+      </div>
+      <div class="relative flex flex-col items-center text-center px-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mb-3" style="background:#DC2626">3</div>
+        <div class="bg-white rounded-xl p-4 card-shadow w-full">
+          <div class="text-xs font-bold uppercase tracking-wide mb-1 text-red-600">Phase 3</div>
+          <div class="text-sm font-bold mb-1" style="color:var(--navy)">August</div>
+          <p class="text-xs text-gray-600">Push Module 1 registrations — workshop is Aug 29–30</p>
+        </div>
+      </div>
+      <div class="relative flex flex-col items-center text-center px-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm z-10 mb-3" style="background:#059669">4</div>
+        <div class="bg-white rounded-xl p-4 card-shadow w-full">
+          <div class="text-xs font-bold uppercase tracking-wide mb-1 text-green-700">Phase 4</div>
+          <div class="text-sm font-bold mb-1" style="color:var(--navy)">Sept–Dec</div>
+          <p class="text-xs text-gray-600">Build interest and waitlist for 2027 retreats</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Numbers -->
+  <div class="mb-6">
+    <h2 class="text-lg font-bold mb-1" style="color:var(--navy)">Quick Numbers</h2>
+    <p class="text-sm text-gray-500 mb-5">At a glance — what we're committing to.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+
+      <div class="bg-white rounded-2xl p-5 card-shadow text-center">
+        <div class="text-3xl font-extrabold mb-1" style="color:var(--gold)">3</div>
+        <div class="text-sm font-semibold" style="color:var(--navy)">Platforms</div>
+        <p class="text-xs text-gray-500 mt-1">Instagram, TikTok, Facebook</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow text-center">
+        <div class="text-3xl font-extrabold mb-1" style="color:var(--navy)">20</div>
+        <div class="text-sm font-semibold" style="color:var(--navy)">Posts per Month</div>
+        <p class="text-xs text-gray-500 mt-1">Across all platforms</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow text-center">
+        <div class="text-3xl font-extrabold mb-1 text-red-600">1</div>
+        <div class="text-sm font-semibold" style="color:var(--navy)">Workshop to Fill</div>
+        <p class="text-xs text-gray-500 mt-1">Module 1 — Aug 29–30</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow text-center">
+        <div class="text-3xl font-extrabold mb-1 text-green-600">2027</div>
+        <div class="text-sm font-semibold" style="color:var(--navy)">Retreat List</div>
+        <p class="text-xs text-gray-500 mt-1">Start building it now</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SERVICES OFFERED ===== -->
+  <div class="mb-12">
+    <h2 class="text-lg font-bold mb-1" style="color:var(--navy)">Services Offered</h2>
+    <p class="text-sm text-gray-500 mb-5">What BHD Asia currently provides — all marketing content will be built around these.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="bg-white rounded-2xl p-5 card-shadow border-l-4" style="border-color:var(--gold)">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#FBF3E0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:var(--gold)">Workshop</span>
+            <h3 class="text-sm font-bold mt-1" style="color:var(--navy)">TRE Module 1 — Group Workshop</h3>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed">2-day in-person certification workshop. Participants learn the full TRE method and can use it for personal practice. Next date: <strong>Aug 29–30, 2026</strong>.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow border-l-4" style="border-color:var(--navy)">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#E8EBF0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#0A1628" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:var(--navy)">Private</span>
+            <h3 class="text-sm font-bold mt-1" style="color:var(--navy)">1-on-1 Private Sessions</h3>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed">Personal TRE sessions with Isabelle for individuals who prefer private guidance. Available in-person in Singapore or via Zoom for overseas clients.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow border-l-4" style="border-color:#059669">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#ECFDF5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#059669">Corporate</span>
+            <h3 class="text-sm font-bold mt-1" style="color:var(--navy)">Corporate Wellness Programs</h3>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed">TRE workshops tailored for companies and teams. Helps employees manage stress, burnout, and anxiety. Delivered on-site or virtually.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow border-l-4" style="border-color:#7C3AED">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#F3F0FF">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#7C3AED">Online</span>
+            <h3 class="text-sm font-bold mt-1" style="color:var(--navy)">Virtual / Online Sessions</h3>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed">TRE sessions and workshops delivered via Zoom for clients outside Singapore. Same content — accessible from anywhere in the world.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow border-l-4" style="border-color:#DC2626">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#FEF2F2">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#DC2626">Retreat</span>
+            <h3 class="text-sm font-bold mt-1" style="color:var(--navy)">TRE Retreats</h3>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed">Multi-day immersive retreat experience combining TRE with rest and recovery. Planned for <strong>2027</strong> — building the waitlist now.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 card-shadow border-l-4 border-dashed" style="border-color:#D1D5DB">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-gray-100">
+            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-gray-200 text-gray-500">TBC</span>
+            <h3 class="text-sm font-bold mt-1 text-gray-400">Add More Services</h3>
+          </div>
+        </div>
+        <p class="text-xs text-gray-400 leading-relaxed italic">Any other offerings? Add them here so all marketing content reflects the full picture.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DIGITAL RAW ASSETS ===== -->
+  <div class="mb-6">
+    <h2 class="text-lg font-bold mb-1" style="color:var(--navy)">Digital Raw Assets</h2>
+    <p class="text-sm text-gray-500 mb-2">All photos and videos available for use in marketing. Add files here with a short description so we know what we have to work with.</p>
+    <div class="p-3 rounded-xl border border-yellow-300 bg-yellow-50 mb-5 flex items-start gap-2">
+      <svg class="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p class="text-xs text-yellow-800">We need these assets from Isabelle before we can start creating content. The more we have, the better the posts will look.</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex gap-2 mb-4 flex-wrap">
+      <button onclick="filterAssets('all')" id="af-all" class="asset-filter-btn text-xs px-3 py-1.5 rounded-full font-semibold transition-colors text-white" style="background:var(--navy)">All</button>
+      <button onclick="filterAssets('photo')" id="af-photo" class="asset-filter-btn text-xs px-3 py-1.5 rounded-full font-semibold transition-colors bg-gray-200 text-gray-600">Photos</button>
+      <button onclick="filterAssets('video')" id="af-video" class="asset-filter-btn text-xs px-3 py-1.5 rounded-full font-semibold transition-colors bg-gray-200 text-gray-600">Videos</button>
+      <button onclick="filterAssets('needed')" id="af-needed" class="asset-filter-btn text-xs px-3 py-1.5 rounded-full font-semibold transition-colors bg-gray-200 text-gray-600">Still Needed</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="assets-grid">
+
+      <!-- PHOTO assets -->
+      <div class="asset-card photo bg-white rounded-2xl card-shadow overflow-hidden" data-type="photo" data-status="ready">
+        <div class="h-28 flex items-center justify-center" style="background:linear-gradient(135deg,#E8EBF0,#F8F9FB)">
+          <svg class="w-10 h-10 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:var(--navy)">Photo</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold">Ready</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Isabelle Headshot</h4>
+          <p class="text-xs text-gray-500">Professional photo of Isabelle — for website About page, social profiles, and ads. <span class="text-yellow-700 font-semibold">Needs a clean background version.</span></p>
+        </div>
+      </div>
+
+      <div class="asset-card photo bg-white rounded-2xl card-shadow overflow-hidden" data-type="photo" data-status="ready">
+        <div class="h-28 flex items-center justify-center" style="background:linear-gradient(135deg,#E8EBF0,#F8F9FB)">
+          <svg class="w-10 h-10 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:var(--navy)">Photo</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold">Ready</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Workshop / In-Session Photos</h4>
+          <p class="text-xs text-gray-500">Photos of participants during TRE sessions or workshops. Used for Instagram, Facebook, and website gallery. Group shots and individual poses needed.</p>
+        </div>
+      </div>
+
+      <div class="asset-card video bg-white rounded-2xl card-shadow overflow-hidden" data-type="video" data-status="ready">
+        <div class="h-28 flex items-center justify-center" style="background:linear-gradient(135deg,#0A1628,#1a2d4a)">
+          <svg class="w-10 h-10 text-white opacity-40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#7C3AED">Video</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold">Ready</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">TRE Demo / Explanation Clip</h4>
+          <p class="text-xs text-gray-500">Short video of Isabelle explaining or demonstrating TRE. Ideal for Reels, TikTok, and website homepage. Must be vertical (9:16) for social.</p>
+        </div>
+      </div>
+
+      <div class="asset-card video bg-white rounded-2xl card-shadow overflow-hidden" data-type="video" data-status="ready">
+        <div class="h-28 flex items-center justify-center" style="background:linear-gradient(135deg,#0A1628,#1a2d4a)">
+          <svg class="w-10 h-10 text-white opacity-40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#7C3AED">Video</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold">Ready</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Testimonial / Client Reaction Video</h4>
+          <p class="text-xs text-gray-500">Client sharing their experience after a session or workshop. Extremely powerful for ads and social proof. Even a casual phone recording works.</p>
+        </div>
+      </div>
+
+      <!-- NEEDED assets -->
+      <div class="asset-card needed bg-white rounded-2xl card-shadow overflow-hidden border-2 border-dashed" style="border-color:#FCA5A5" data-type="photo" data-status="needed">
+        <div class="h-28 flex items-center justify-center bg-red-50">
+          <svg class="w-10 h-10 text-red-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:var(--navy)">Photo</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-semibold">Needed</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Event / Venue Photos</h4>
+          <p class="text-xs text-gray-500">Photos of the workshop venue or retreat location. Used for event promotion posts and ads. Wide shots preferred.</p>
+        </div>
+      </div>
+
+      <div class="asset-card needed bg-white rounded-2xl card-shadow overflow-hidden border-2 border-dashed" style="border-color:#FCA5A5" data-type="video" data-status="needed">
+        <div class="h-28 flex items-center justify-center bg-red-50">
+          <svg class="w-10 h-10 text-red-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#7C3AED">Video</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-semibold">Needed</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Isabelle Intro / "About Me" Video</h4>
+          <p class="text-xs text-gray-500">30–60 second clip of Isabelle introducing herself and her story. Core content for website, ads, and social profiles. High priority.</p>
+        </div>
+      </div>
+
+      <div class="asset-card needed bg-white rounded-2xl card-shadow overflow-hidden border-2 border-dashed" style="border-color:#FCA5A5" data-type="photo" data-status="needed">
+        <div class="h-28 flex items-center justify-center bg-red-50">
+          <svg class="w-10 h-10 text-red-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:var(--navy)">Photo</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-semibold">Needed</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Brand / Logo Files</h4>
+          <p class="text-xs text-gray-500">Official BHD Asia logo in PNG with transparent background. Needed for all designed content, ads, and website header.</p>
+        </div>
+      </div>
+
+      <div class="asset-card needed bg-white rounded-2xl card-shadow overflow-hidden border-2 border-dashed" style="border-color:#FCA5A5" data-type="video" data-status="needed">
+        <div class="h-28 flex items-center justify-center bg-red-50">
+          <svg class="w-10 h-10 text-red-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white" style="background:#7C3AED">Video</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-semibold">Needed</span>
+          </div>
+          <h4 class="text-sm font-bold mt-2 mb-1" style="color:var(--navy)">Behind-the-Scenes Clips</h4>
+          <p class="text-xs text-gray-500">Casual phone videos — setting up the room, workshop in progress, post-session moments. Great for TikTok and Stories content.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary row -->
+    <div class="mt-5 grid grid-cols-3 gap-3">
+      <div class="bg-white rounded-xl p-4 card-shadow text-center">
+        <div class="text-2xl font-extrabold mb-0.5" style="color:var(--navy)" id="count-photo">2</div>
+        <div class="text-xs text-gray-500">Photos Ready</div>
+      </div>
+      <div class="bg-white rounded-xl p-4 card-shadow text-center">
+        <div class="text-2xl font-extrabold mb-0.5 text-purple-600" id="count-video">2</div>
+        <div class="text-xs text-gray-500">Videos Ready</div>
+      </div>
+      <div class="bg-white rounded-xl p-4 card-shadow text-center">
+        <div class="text-2xl font-extrabold mb-0.5 text-red-500" id="count-needed">4</div>
+        <div class="text-xs text-gray-500">Still Needed</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== PAGE 2: WEBSITE PLAN ========== -->
+<section id="page-website" class="page max-w-6xl mx-auto px-4 py-10">
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-extrabold mb-2" style="color:var(--navy)">Website Plan</h1>
+    <p class="text-base text-gray-500 font-medium">How We Make BHD Asia Show Up on Google</p>
+    <div class="mt-4 p-4 bg-white rounded-xl card-shadow border-l-4" style="border-color:var(--gold)">
+      <p class="text-sm text-gray-700">The current website exists but is hard to find on Google. These steps will fix that — organized into three approaches that work together.</p>
+    </div>
+  </div>
+
+  <!-- 3 Sections Side by Side (stacked on mobile) -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- SECTION A: SEO -->
+    <div class="bg-white rounded-2xl p-6 card-shadow">
+      <div class="mb-4">
+        <span class="section-label text-white" style="background:var(--navy)">SEO</span>
+        <h2 class="text-base font-bold mt-2 mb-1" style="color:var(--navy)">Be Found on Google</h2>
+        <p class="text-xs text-gray-600 leading-relaxed">When someone types <em>"TRE Singapore"</em> or <em>"stress relief workshop Singapore"</em> into Google, we want bhdasia.com to appear on the first page.</p>
+      </div>
+      <div class="space-y-3">
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">1</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Fix Page Titles &amp; Descriptions</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Every page on the website needs a clear title that includes words people actually search for. Right now most pages don't have this.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">2</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Add Keywords to the Pages</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Words like "TRE Singapore", "nervous system healing Singapore", "somatic coach Singapore" need to appear naturally throughout the website text.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">3</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Create a Blog / Resources Section</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Google rewards websites that regularly publish useful content. We'll add a simple blog with articles about TRE, stress, and the nervous system — 2 articles per month.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">4</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Fix the Website Speed</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Slow websites rank lower on Google. We'll compress images and clean up the code to make the site load faster.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">5</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Add FAQ Sections to Key Pages</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Google loves FAQ content. Adding "What is TRE?" and "Is TRE safe?" type questions on each page boosts ranking.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">6</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Get Other Websites to Link to BHD Asia</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">When reputable websites mention bhdasia.com, Google sees it as a trust signal. We'll reach out to wellness directories and partner sites.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION B: AEO -->
+    <div class="bg-white rounded-2xl p-6 card-shadow">
+      <div class="mb-4">
+        <span class="section-label text-white" style="background:#7C3AED">AEO</span>
+        <h2 class="text-base font-bold mt-2 mb-1" style="color:var(--navy)">Show Up When People Ask AI</h2>
+        <p class="text-xs text-gray-600 leading-relaxed">When people ask ChatGPT or Google's AI <em>"What is TRE in Singapore?"</em> we want Isabelle's name and BHD Asia to come up as the answer.</p>
+        <p class="text-xs text-gray-400 mt-2 italic">AEO = Answer Engine Optimization — making sure AI tools recommend Isabelle.</p>
+      </div>
+      <div class="space-y-3">
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#7C3AED">1</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Add Structured Data (Schema Markup)</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">This is invisible code that tells Google exactly what BHD Asia is, what events are happening, and who Isabelle is. Simple to add, big impact on how AI reads the site.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#7C3AED">2</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Write Clear 'About' and 'Expert' Content</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">AI tools pull from authoritative pages. We write a clear page that explains exactly who Isabelle is, her credentials, and what TRE is — in a format AI can easily read.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#7C3AED">3</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Add FAQ Schema to Every Page</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Mark up the FAQ sections so AI tools can quote them directly as answers — increasing the chance Isabelle appears as the expert source.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#7C3AED">4</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Create a Google Business Profile</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Isabelle's practice should appear on Google Maps and in "People Also Ask" boxes when people search locally. This is free and essential.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- What is AEO box -->
+      <div class="mt-4 p-3 rounded-xl" style="background:#F3F0FF">
+        <p class="text-xs font-semibold mb-1" style="color:#7C3AED">Why AEO matters now</p>
+        <p class="text-xs text-gray-600">More people are using ChatGPT and Google AI to find services. If Isabelle isn't mentioned by AI, she's invisible to that audience — and it's growing fast.</p>
+      </div>
+    </div>
+
+    <!-- SECTION C: GEO -->
+    <div class="bg-white rounded-2xl p-6 card-shadow">
+      <div class="mb-4">
+        <span class="section-label text-white" style="background:#059669">GEO</span>
+        <h2 class="text-base font-bold mt-2 mb-1" style="color:var(--navy)">Show Up for Singapore Searches</h2>
+        <p class="text-xs text-gray-600 leading-relaxed">When someone in Singapore searches for wellness coaching or TRE training, we want BHD Asia to appear at the top — not someone overseas.</p>
+        <p class="text-xs text-gray-400 mt-2 italic">GEO = Local SEO — targeting people in Singapore specifically.</p>
+      </div>
+      <div class="space-y-3">
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#059669">1</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Set Up / Optimize Google Business Profile</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Claim the listing, add photos, add services, add opening hours. This is free and directly improves how BHD Asia appears in local searches.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#059669">2</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Use Singapore-Specific Keywords</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Add "Singapore" to key phrases throughout the site: "TRE trainer Singapore", "somatic coach Singapore", "stress release workshop Singapore".</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#059669">3</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Get Listed in Singapore Directories</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Submit BHD Asia to Singapore wellness, coaching, and HR directories. These links tell Google that Isabelle is a local expert.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#059669">4</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Add Location Pages</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">A dedicated page about working with clients in Singapore, mentioning specific areas like CBD, Orchard, etc. — shows Google this is a real local business.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card bg-gray-50 rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background:#059669">5</div>
+            <div>
+              <h4 class="text-sm font-bold mb-1" style="color:var(--navy)">Encourage Google Reviews</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">Ask past clients to leave a Google review. Reviews directly improve local search ranking — and they build trust for new visitors.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end 3 col grid -->
+
+  <!-- Summary bar -->
+  <div class="mt-8 p-5 rounded-2xl navy-bg text-white flex flex-wrap gap-6 items-center justify-around">
+    <div class="text-center">
+      <div class="text-2xl font-bold" style="color:var(--gold)">SEO</div>
+      <div class="text-xs text-gray-300 mt-1">6 steps · Google ranking</div>
+    </div>
+    <div class="text-white text-xl font-thin">+</div>
+    <div class="text-center">
+      <div class="text-2xl font-bold" style="color:#A78BFA">AEO</div>
+      <div class="text-xs text-gray-300 mt-1">4 steps · AI visibility</div>
+    </div>
+    <div class="text-white text-xl font-thin">+</div>
+    <div class="text-center">
+      <div class="text-2xl font-bold text-green-400">GEO</div>
+      <div class="text-xs text-gray-300 mt-1">5 steps · Local Singapore</div>
+    </div>
+    <div class="text-white text-xl font-thin">=</div>
+    <div class="text-center">
+      <div class="text-2xl font-bold text-white">BHD Asia on Page 1</div>
+      <div class="text-xs text-gray-300 mt-1">The goal of everything above</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== PAGE 3: SOCIAL MEDIA ========== -->
+<section id="page-social" class="page max-w-6xl mx-auto px-4 py-10">
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-extrabold mb-2" style="color:var(--navy)">Social Media Plan</h1>
+    <p class="text-base text-gray-500 font-medium">What to Post and When</p>
+    <div class="mt-4 p-4 bg-white rounded-xl card-shadow border-l-4" style="border-color:var(--gold)">
+      <p class="text-sm text-gray-700">Isabelle already has great content — videos, photos, workshops. We're not starting from scratch. We're organising what exists and filling in the gaps.</p>
+    </div>
+  </div>
+
+  <!-- Platform Strategy -->
+  <div class="mb-8">
+    <h2 class="text-base font-bold mb-3" style="color:var(--navy)">Platform Strategy</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+      <div class="bg-white rounded-xl p-4 card-shadow flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl platform-instagram flex items-center justify-center text-white flex-shrink-0"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <div>
+          <div class="font-bold text-sm" style="color:var(--navy)">Instagram</div>
+          <p class="text-xs text-gray-600 mt-0.5">Main platform. Education + personal brand.</p>
+          <span class="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded-full text-white" style="background:#bc1888">5x per week</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-4 card-shadow flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-black flex items-center justify-center text-white flex-shrink-0"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <div>
+          <div class="font-bold text-sm" style="color:var(--navy)">TikTok</div>
+          <p class="text-xs text-gray-600 mt-0.5">Short videos — Reels repurposed. Reach new audiences.</p>
+          <span class="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded-full text-white" style="background:#010101">3–5x per week</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-4 card-shadow flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white flex-shrink-0" style="background:#1877F2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div>
+          <div class="font-bold text-sm" style="color:var(--navy)">Facebook</div>
+          <p class="text-xs text-gray-600 mt-0.5">Community + event promotion.</p>
+          <span class="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded-full text-white" style="background:#1877F2">3x per week</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Repurposing Note -->
+  <div class="mb-8 p-5 rounded-2xl" style="background:#FEF9EC; border: 2px solid var(--gold)">
+    <p class="text-sm font-bold mb-2 flex items-center gap-2" style="color:var(--navy)"><svg class="w-4 h-4 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> Repurpose First</p>
+    <p class="text-sm text-gray-700">Before creating anything new: all existing Instagram Reels get posted to TikTok. All existing videos get cut into short clips. All past carousels become Facebook posts. <strong>This saves time and doubles the reach</strong> without extra effort from Isabelle.</p>
+  </div>
+
+  <!-- Content Types -->
+  <div class="mb-8">
+    <h2 class="text-base font-bold mb-1" style="color:var(--navy)">Content Types</h2>
+    <p class="text-sm text-gray-500 mb-4">Click any card to see a sample post.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+
+      <div class="content-type-card bg-white rounded-xl p-4 card-shadow text-center" onclick="openContentModal('educational')">
+        <div class="mb-2 flex justify-center" style="color:var(--gold)"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="text-sm font-bold mb-1" style="color:var(--navy)">Educational Post</div>
+        <p class="text-xs text-gray-500">Teach something about TRE or the nervous system</p>
+        <div class="mt-3 text-xs font-semibold" style="color:var(--gold)">See Sample →</div>
+      </div>
+
+      <div class="content-type-card bg-white rounded-xl p-4 card-shadow text-center" onclick="openContentModal('personal')">
+        <div class="mb-2 flex justify-center" style="color:var(--navy)"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="text-sm font-bold mb-1" style="color:var(--navy)">Personal Story</div>
+        <p class="text-xs text-gray-500">Isabelle shares her own experience or a client story</p>
+        <div class="mt-3 text-xs font-semibold" style="color:var(--gold)">See Sample →</div>
+      </div>
+
+      <div class="content-type-card bg-white rounded-xl p-4 card-shadow text-center" onclick="openContentModal('reel')">
+        <div class="mb-2 flex justify-center" style="color:#DC2626"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+        <div class="text-sm font-bold mb-1" style="color:var(--navy)">Reel / Video</div>
+        <p class="text-xs text-gray-500">Short video explaining TRE, behind-the-scenes, or Q&amp;A</p>
+        <div class="mt-3 text-xs font-semibold" style="color:var(--gold)">See Sample →</div>
+      </div>
+
+      <div class="content-type-card bg-white rounded-xl p-4 card-shadow text-center" onclick="openContentModal('event')">
+        <div class="mb-2 flex justify-center" style="color:#059669"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="text-sm font-bold mb-1" style="color:var(--navy)">Event Promo</div>
+        <p class="text-xs text-gray-500">Promote the upcoming workshop or retreat</p>
+        <div class="mt-3 text-xs font-semibold" style="color:var(--gold)">See Sample →</div>
+      </div>
+
+      <div class="content-type-card bg-white rounded-xl p-4 card-shadow text-center" onclick="openContentModal('testimonial')">
+        <div class="mb-2 flex justify-center" style="color:#7C3AED"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="text-sm font-bold mb-1" style="color:var(--navy)">Testimonial</div>
+        <p class="text-xs text-gray-500">Share what a client said (anonymised if needed)</p>
+        <div class="mt-3 text-xs font-semibold" style="color:var(--gold)">See Sample →</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Caption Formula -->
+  <div class="mb-8 bg-white rounded-2xl p-6 card-shadow">
+    <h2 class="text-base font-bold mb-3" style="color:var(--navy)">The Caption Formula We Use for Every Post</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+      <div class="rounded-xl p-4 text-center" style="background:#F0F7FF">
+        <div class="text-2xl font-extrabold mb-1" style="color:var(--navy)">1</div>
+        <div class="font-bold text-sm mb-1">Hook</div>
+        <p class="text-xs text-gray-600">The first line grabs attention and makes people stop scrolling.</p>
+      </div>
+      <div class="rounded-xl p-4 text-center" style="background:#FEF9EC">
+        <div class="text-2xl font-extrabold mb-1" style="color:var(--gold)">2</div>
+        <div class="font-bold text-sm mb-1">Value</div>
+        <p class="text-xs text-gray-600">Teach or share something useful — the reason people follow.</p>
+      </div>
+      <div class="rounded-xl p-4 text-center" style="background:#F0FFF4">
+        <div class="text-2xl font-extrabold mb-1 text-green-700">3</div>
+        <div class="font-bold text-sm mb-1">Call to Action</div>
+        <p class="text-xs text-gray-600">Tell people what to do next: comment, DM, click link in bio.</p>
+      </div>
+    </div>
+    <div class="p-4 rounded-xl bg-gray-50 border-l-4" style="border-color:var(--gold)">
+      <p class="text-xs font-semibold mb-1 text-gray-500 uppercase tracking-wide">Example Caption</p>
+      <p class="text-sm text-gray-700 italic leading-relaxed">"Still stressed after meditation? 🌿 Here's why your body needs more than breathing exercises... <span class="text-gray-400">[caption continues with the explanation]</span> ... Comment GUIDE to get the free resource."</p>
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="mb-6">
+    <h2 class="text-base font-bold mb-1" style="color:var(--navy)">Social Media Calendar — June 2026</h2>
+    <p class="text-sm text-gray-500 mb-4">Click "View Post" on any day to see the full post preview.</p>
+
+    <!-- Weekly Rhythm + Legend -->
+    <div class="mb-4 bg-white rounded-xl card-shadow p-4">
+      <p class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--navy)">Weekly Posting Rhythm — 3x per platform</p>
+      <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="rounded-lg p-3" style="background:#fff8f3; border-left:3px solid #e6683c">
+          <div class="inline-flex items-center gap-1 mb-2">
+            <span class="text-white font-bold rounded px-1.5 py-0.5 text-xs" style="background:linear-gradient(135deg,#f09433,#bc1888)">IG</span>
+            <span class="font-bold text-xs" style="color:var(--navy)">Instagram</span>
+          </div>
+          <div class="flex gap-1 flex-wrap">
+            <span class="text-xs px-2 py-0.5 rounded font-semibold" style="background:#e6683c;color:white">Mon</span>
+            <span class="text-xs px-2 py-0.5 rounded font-semibold" style="background:#e6683c;color:white">Wed</span>
+            <span class="text-xs px-2 py-0.5 rounded font-semibold" style="background:#e6683c;color:white">Fri</span>
+          </div>
+        </div>
+        <div class="rounded-lg p-3" style="background:#f7f7f7; border-left:3px solid #333">
+          <div class="inline-flex items-center gap-1 mb-2">
+            <span class="text-white font-bold rounded px-1.5 py-0.5 text-xs bg-black">TT</span>
+            <span class="font-bold text-xs" style="color:var(--navy)">TikTok</span>
+          </div>
+          <div class="flex gap-1 flex-wrap">
+            <span class="text-xs px-2 py-0.5 rounded font-semibold bg-black text-white">Tue</span>
+            <span class="text-xs px-2 py-0.5 rounded font-semibold bg-black text-white">Thu</span>
+            <span class="text-xs px-2 py-0.5 rounded font-semibold bg-black text-white">Sat</span>
+          </div>
+        </div>
+        <div class="rounded-lg p-3" style="background:#f0f5ff; border-left:3px solid #1877F2">
+          <div class="inline-flex items-center gap-1 mb-2">
+            <span class="text-white font-bold rounded px-1.5 py-0.5 text-xs" style="background:#1877F2">FB</span>
+            <span class="font-bold text-xs" style="color:var(--navy)">Facebook</span>
+          </div>
+          <div class="flex gap-1 flex-wrap">
+            <span class="text-xs px-2 py-0.5 rounded font-semibold text-white" style="background:#1877F2">Mon</span>
+            <span class="text-xs px-2 py-0.5 rounded font-semibold text-white" style="background:#1877F2">Wed</span>
+            <span class="text-xs px-2 py-0.5 rounded font-semibold text-white" style="background:#1877F2">Sun</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500">Mon &amp; Wed: Instagram and Facebook post the same content (repurposed). Each platform has its own color row in the calendar below.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl card-shadow overflow-hidden">
+      <table class="w-full text-xs border-collapse" id="calendar-table">
+        <thead>
+          <tr class="navy-bg text-white">
+            <th class="p-2 font-semibold text-center">Mon</th>
+            <th class="p-2 font-semibold text-center">Tue</th>
+            <th class="p-2 font-semibold text-center">Wed</th>
+            <th class="p-2 font-semibold text-center">Thu</th>
+            <th class="p-2 font-semibold text-center">Fri</th>
+            <th class="p-2 font-semibold text-center" style="background:#1a2e4a">Sat</th>
+            <th class="p-2 font-semibold text-center" style="background:#1a2e4a">Sun</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== PAGE 4: CAMPAIGNS & ADS ========== -->
+<section id="page-campaigns" class="page max-w-6xl mx-auto px-4 py-10">
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-extrabold mb-2" style="color:var(--navy)">Campaigns &amp; Ads</h1>
+    <p class="text-base text-gray-500 font-medium">Getting People to Register and Sign Up</p>
+    <div class="mt-4 p-4 bg-white rounded-xl card-shadow border-l-4" style="border-color:var(--gold)">
+      <p class="text-sm text-gray-700">We run 3 separate campaigns at the same time, each with a clear goal. They support each other without getting confused.</p>
+    </div>
+  </div>
+
+  <!-- Campaign 1 -->
+  <div class="bg-white rounded-2xl p-6 card-shadow mb-6 border-2" style="border-color:var(--gold)">
+    <div class="flex items-start justify-between flex-wrap gap-3 mb-4">
+      <div>
+        <span class="section-label text-white mb-2 inline-block" style="background:var(--gold)">Campaign 1</span>
+        <h2 class="text-xl font-bold" style="color:var(--navy)">Fill Module 1 Workshop</h2>
+      </div>
+      <div class="text-right">
+        <div class="text-sm font-semibold text-gray-500">Timeline</div>
+        <div class="text-sm font-bold" style="color:var(--gold)">June 1 → August 28</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <div class="p-4 rounded-xl mb-3" style="background:#FEF9EC">
+          <p class="text-xs font-bold uppercase tracking-wide mb-1" style="color:var(--gold)">Goal</p>
+          <p class="text-sm text-gray-700">Register <strong>15–20 people</strong> for the TRE Provider Training workshop on August 29–30, Singapore.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide mb-2 text-gray-500">How We Do It</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>Instagram + Facebook + TikTok organic posts (already in the June calendar)</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>Email campaign sent to existing contact list</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>Paid Meta ads (Instagram + Facebook) targeting coaches, therapists, and HR professionals in Singapore</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ad Preview -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide mb-2 text-gray-500">Paid Ad Example</p>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 card-shadow max-w-xs">
+          <div class="h-28 flex items-center justify-center navy-bg">
+            <span class="font-bold text-center px-4 leading-tight" style="color:var(--gold)">Become a Certified<br/>TRE Provider</span>
+          </div>
+          <div class="p-4 bg-white">
+            <div class="text-xs text-gray-400 mb-1">bhdasia.com · Sponsored</div>
+            <div class="text-sm font-bold mb-1" style="color:var(--navy)">Become a Certified TRE Provider — August 29–30, Singapore</div>
+            <p class="text-xs text-gray-600 mb-3">In 2 days, learn the somatic technique used by 1M+ people worldwide. Certified by Isabelle — one of the only TRE Global Certifying Trainers in Asia. Limited spots.</p>
+            <div class="text-center py-2 rounded-lg text-white text-sm font-semibold" style="background:var(--gold)">Learn More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign 2 -->
+  <div class="bg-white rounded-2xl p-6 card-shadow mb-6 border-2" style="border-color:var(--navy)">
+    <div class="flex items-start justify-between flex-wrap gap-3 mb-4">
+      <div>
+        <span class="section-label text-white mb-2 inline-block" style="background:var(--navy)">Campaign 2</span>
+        <h2 class="text-xl font-bold" style="color:var(--navy)">2027 Retreats — Start Building Interest Now</h2>
+      </div>
+      <div class="text-right">
+        <div class="text-sm font-semibold text-gray-500">Timeline</div>
+        <div class="text-sm font-bold" style="color:var(--navy)">Start September 2026</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <div class="p-4 rounded-xl mb-3" style="background:#F0F7FF">
+          <p class="text-xs font-bold uppercase tracking-wide mb-1" style="color:var(--navy)">Goal</p>
+          <p class="text-sm text-gray-700">Collect names of people interested in attending a TRE retreat in 2027. <strong>No selling yet</strong> — just building the list. When the time comes, we already have warm leads.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide mb-2 text-gray-500">How We Do It</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-blue-500 mt-0.5 flex-shrink-0">✓</span>Post: "What would your dream TRE retreat look like?" on Instagram — gathers ideas and interest</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-blue-500 mt-0.5 flex-shrink-0">✓</span>Simple interest form linked in bio</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-blue-500 mt-0.5 flex-shrink-0">✓</span>Stories poll: "Would you attend a 3-day TRE retreat in Bali / Japan / Singapore?"</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-blue-500 mt-0.5 flex-shrink-0">✓</span>Email to existing list: "We're planning 2027 retreats — are you interested?"</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ad Preview -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide mb-2 text-gray-500">Paid Ad Example</p>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 card-shadow max-w-xs">
+          <div class="h-28 flex items-center justify-center" style="background: linear-gradient(135deg, #0A1628 0%, #1a3a5c 100%)">
+            <div class="text-center px-4">
+              <div class="text-white font-bold text-sm">TRE Retreat 2027</div>
+              <div class="text-xs mt-1" style="color:var(--gold)">Bali · Japan · Singapore</div>
+              <div class="text-xs text-gray-400 mt-1">🌿 Something special is coming</div>
+            </div>
+          </div>
+          <div class="p-4 bg-white">
+            <div class="text-xs text-gray-400 mb-1">bhdasia.com · Sponsored</div>
+            <div class="text-sm font-bold mb-1" style="color:var(--navy)">TRE Retreat 2027 — Early Interest List</div>
+            <p class="text-xs text-gray-600 mb-3">We're planning something special for 2027. Join the early interest list and be the first to hear. No commitment — just curiosity. 🌿</p>
+            <div class="text-center py-2 rounded-lg text-white text-sm font-semibold" style="background:var(--navy)">I'm Interested</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign 3 -->
+  <div class="bg-white rounded-2xl p-6 card-shadow mb-8 border-2 border-purple-300">
+    <div class="flex items-start justify-between flex-wrap gap-3 mb-4">
+      <div>
+        <span class="section-label text-white mb-2 inline-block bg-purple-600">Campaign 3</span>
+        <h2 class="text-xl font-bold" style="color:var(--navy)">Get 1:1 Coaching Clients</h2>
+      </div>
+      <div class="text-right">
+        <div class="text-sm font-semibold text-gray-500">Timeline</div>
+        <div class="text-sm font-bold text-purple-600">Ongoing from June</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <div class="p-4 rounded-xl mb-3 bg-purple-50">
+          <p class="text-xs font-bold uppercase tracking-wide mb-1 text-purple-700">Goal</p>
+          <p class="text-sm text-gray-700">Bring in people who want to work with Isabelle <strong>directly</strong> — not just the workshop. These are 1:1 coaching clients, online or Singapore-based.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide mb-2 text-gray-500">How We Do It</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-purple-500 mt-0.5 flex-shrink-0">✓</span>Weekly personal posts showing Isabelle's coaching work and results</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-purple-500 mt-0.5 flex-shrink-0">✓</span>"Book a discovery call" link in every email sent</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-purple-500 mt-0.5 flex-shrink-0">✓</span>Paid ad targeting Singapore professionals with burnout or chronic stress keywords</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ad Preview -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide mb-2 text-gray-500">Paid Ad Example</p>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 card-shadow max-w-xs">
+          <div class="h-28 flex items-center justify-center" style="background: linear-gradient(135deg, #4C1D95, #7C3AED)">
+            <div class="text-center px-4">
+              <div class="text-white font-bold text-sm leading-tight">Still stressed even after<br/>trying everything?</div>
+              <div class="text-xs text-purple-200 mt-2">1:1 TRE Coaching with Isabelle</div>
+            </div>
+          </div>
+          <div class="p-4 bg-white">
+            <div class="text-xs text-gray-400 mb-1">bhdasia.com · Sponsored</div>
+            <div class="text-sm font-bold mb-1" style="color:var(--navy)">Still Stressed Even After Trying Everything?</div>
+            <p class="text-xs text-gray-600 mb-3">1:1 TRE coaching with Isabelle Claus Teixeira — ICF PCC, TRE Global Certifying Trainer. Work directly with your nervous system. Online or Singapore-based.</p>
+            <div class="text-center py-2 rounded-lg text-white text-sm font-semibold bg-purple-600">Book a Discovery Call</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Guide Table -->
+  <div class="bg-white rounded-2xl p-6 card-shadow mb-6">
+    <h2 class="text-base font-bold mb-1" style="color:var(--navy)">Paid Ads — Quick Overview</h2>
+    <p class="text-sm text-gray-500 mb-4">A simple summary of all the ads we'll run. One row = one ad.</p>
+    <div class="table-wrap">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="navy-bg text-white text-left">
+            <th class="p-3 rounded-tl-lg font-semibold">What</th>
+            <th class="p-3 font-semibold">Where</th>
+            <th class="p-3 font-semibold">Who We Target</th>
+            <th class="p-3 rounded-tr-lg font-semibold">Goal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium" style="color:var(--navy)">Module 1 Ad</td>
+            <td class="p-3 text-gray-600">Instagram + Facebook</td>
+            <td class="p-3 text-gray-600">Coaches, therapists, HR in Singapore</td>
+            <td class="p-3 text-gray-600">Workshop registration</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium" style="color:var(--navy)">Retreat Interest Ad</td>
+            <td class="p-3 text-gray-600">Instagram + Facebook</td>
+            <td class="p-3 text-gray-600">Wellness-minded professionals in Asia</td>
+            <td class="p-3 text-gray-600">Join interest list</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium" style="color:var(--navy)">Coaching Ad</td>
+            <td class="p-3 text-gray-600">Instagram + Facebook</td>
+            <td class="p-3 text-gray-600">Singapore professionals, burnout keywords</td>
+            <td class="p-3 text-gray-600">Discovery call booking</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-medium" style="color:var(--navy)">Awareness Video</td>
+            <td class="p-3 text-gray-600">TikTok + Instagram Reels</td>
+            <td class="p-3 text-gray-600">General wellness audience, Singapore</td>
+            <td class="p-3 text-gray-600">Brand awareness</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-5 p-4 rounded-xl bg-gray-50 border-l-4 border-gray-300">
+      <p class="text-xs font-semibold mb-1 text-gray-700">Organic vs Paid — What's the Difference?</p>
+      <p class="text-xs text-gray-600"><strong>Organic</strong> = the regular posts we make every week. Free — but only reaches people who already follow or discover the account naturally. <strong>Paid</strong> = we put money behind a post so it reaches thousands of new people who've never heard of BHD Asia. Start with a small daily budget, then increase what's working.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="navy-bg text-center py-6 mt-10">
+  <p class="text-gray-400 text-xs">BHD Asia Marketing Plan 2026 — Prepared by TechNext</p>
+  <p class="text-gray-600 text-xs mt-1">Isabelle Claus Teixeira · Singapore TRE Global Certifying Trainer · bhdasia.com</p>
+</footer>
+
+<!-- ========== MODAL OVERLAY ========== -->
+<div id="post-modal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal-card" id="modal-card">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- ========== PAGE 5: CLIENT BRIEF ========== -->
+<section id="page-brief" class="page max-w-4xl mx-auto px-4 py-10">
+
+  <!-- Header -->
+  <div class="text-center mb-10">
+    <div class="inline-block px-4 py-1 rounded-full text-xs font-semibold mb-4 text-white gold-bg tracking-widest uppercase">Client Brief</div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold mb-2" style="color:var(--navy)">BHD Asia — Marketing Goals</h1>
+    <p class="text-sm text-gray-400">What we are doing, and what we need from the client to do it.</p>
+  </div>
+
+  <!-- Goal 1 -->
+  <div class="bg-white rounded-2xl card-shadow mb-5 overflow-hidden">
+    <div class="flex items-center gap-4 p-5 border-b border-gray-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-sm" style="background:var(--gold)">1</div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-0.5" style="color:var(--gold)">Goal 1</p>
+        <h2 class="text-base font-extrabold" style="color:var(--navy)">Get Found on Google</h2>
+        <p class="text-sm text-gray-500 mt-0.5">Make the website show up when people search for TRE in Singapore.</p>
+      </div>
+    </div>
+    <div class="p-5">
+      <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">What We Need</p>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Access to the current website (login / editor access)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>List of services and descriptions in her own words</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Her preferred keywords (e.g. "trauma release Singapore", "TRE practitioner")</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>A proper headshot photo and bio</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Goal 2 -->
+  <div class="bg-white rounded-2xl card-shadow mb-5 overflow-hidden">
+    <div class="flex items-center gap-4 p-5 border-b border-gray-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-sm" style="background:var(--navy)">2</div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-0.5" style="color:var(--navy)">Goal 2</p>
+        <h2 class="text-base font-extrabold" style="color:var(--navy)">Build Trust and Credibility</h2>
+        <p class="text-sm text-gray-500 mt-0.5">Make Isabelle look professional and authoritative online.</p>
+      </div>
+    </div>
+    <div class="p-5">
+      <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">What We Need</p>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--navy)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Professional photos (headshots + in-session / workshop photos)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--navy)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Her certifications and training background</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--navy)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Testimonials or client feedback (even informal ones)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--navy)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Her story — why she does this work</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Goal 3 -->
+  <div class="bg-white rounded-2xl card-shadow mb-5 overflow-hidden">
+    <div class="flex items-center gap-4 p-5 border-b border-gray-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-sm" style="background:#7C3AED">3</div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-0.5 text-purple-600">Goal 3</p>
+        <h2 class="text-base font-extrabold" style="color:var(--navy)">Grow Social Media Following</h2>
+        <p class="text-sm text-gray-500 mt-0.5">Stay consistent on Instagram, TikTok, and Facebook to attract new leads.</p>
+      </div>
+    </div>
+    <div class="p-5">
+      <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">What We Need</p>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Brand colors, fonts, or any existing brand guidelines</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Content ideas she's comfortable sharing (personal vs. educational)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Approval on the posting schedule (3× per week per platform)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Access to her social media accounts (or a point of contact to post)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Goal 4 -->
+  <div class="bg-white rounded-2xl card-shadow mb-5 overflow-hidden">
+    <div class="flex items-center gap-4 p-5 border-b border-gray-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-sm" style="background:#059669">4</div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-0.5 text-green-700">Goal 4</p>
+        <h2 class="text-base font-extrabold" style="color:var(--navy)">Convert Visitors into Paying Clients</h2>
+        <p class="text-sm text-gray-500 mt-0.5">Turn website visitors and social followers into actual bookings.</p>
+      </div>
+    </div>
+    <div class="p-5">
+      <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">What We Need</p>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Clear list of current offerings (workshops, 1-on-1, corporate, etc.)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>How people should contact or book her (form, WhatsApp, email?)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Upcoming event dates if any</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Decision on pricing display (show or hide)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Goal 5 -->
+  <div class="bg-white rounded-2xl card-shadow mb-5 overflow-hidden">
+    <div class="flex items-center gap-4 p-5 border-b border-gray-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-sm" style="background:#DC2626">5</div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-0.5 text-red-600">Goal 5</p>
+        <h2 class="text-base font-extrabold" style="color:var(--navy)">Run Paid Ads (When Ready)</h2>
+        <p class="text-sm text-gray-500 mt-0.5">Use Facebook/Instagram ads to reach a wider audience.</p>
+      </div>
+    </div>
+    <div class="p-5">
+      <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">What We Need</p>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>A confirmed budget (even a rough monthly figure)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>A clear target audience (age, location, interests)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>An offer to promote (event, free guide, consultation)</li>
+        <li class="flex items-start gap-2 text-sm text-gray-700"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Ad account access (Facebook Business Manager)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Services Offered -->
+  <div class="bg-white rounded-2xl card-shadow mb-5 overflow-hidden">
+    <div class="flex items-center gap-4 p-5 border-b border-gray-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#FBF3E0">
+        <svg class="w-5 h-5" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-0.5" style="color:var(--gold)">Services</p>
+        <h2 class="text-base font-extrabold" style="color:var(--navy)">What BHD Asia Offers</h2>
+        <p class="text-sm text-gray-500 mt-0.5">All marketing content will be built around these services.</p>
+      </div>
+    </div>
+    <div class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50">
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white flex-shrink-0 mt-0.5" style="background:var(--gold)">1</span>
+        <div><p class="text-sm font-semibold" style="color:var(--navy)">TRE Module 1 — Group Workshop</p><p class="text-xs text-gray-500 mt-0.5">2-day in-person certification. Next date: Aug 29–30, 2026</p></div>
+      </div>
+      <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50">
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white flex-shrink-0 mt-0.5" style="background:var(--navy)">2</span>
+        <div><p class="text-sm font-semibold" style="color:var(--navy)">1-on-1 Private Sessions</p><p class="text-xs text-gray-500 mt-0.5">In-person in Singapore or via Zoom</p></div>
+      </div>
+      <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50">
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white flex-shrink-0 mt-0.5" style="background:#059669">3</span>
+        <div><p class="text-sm font-semibold" style="color:var(--navy)">Corporate Wellness Programs</p><p class="text-xs text-gray-500 mt-0.5">On-site or virtual for companies and teams</p></div>
+      </div>
+      <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50">
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white flex-shrink-0 mt-0.5" style="background:#7C3AED">4</span>
+        <div><p class="text-sm font-semibold" style="color:var(--navy)">Virtual / Online Sessions</p><p class="text-xs text-gray-500 mt-0.5">For clients outside Singapore via Zoom</p></div>
+      </div>
+      <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50">
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white flex-shrink-0 mt-0.5" style="background:#DC2626">5</span>
+        <div><p class="text-sm font-semibold" style="color:var(--navy)">TRE Retreats</p><p class="text-xs text-gray-500 mt-0.5">Multi-day immersive experience — planned for 2027</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital Foundation -->
+  <div class="rounded-2xl p-6 mb-2" style="background:var(--navy)">
+    <p class="text-xs font-bold uppercase tracking-widest mb-3 text-yellow-400">Foundation First</p>
+    <h2 class="text-base font-extrabold text-white mb-4">Clean Digital Foundation — Needed Before Anything Else</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="flex items-start gap-2">
+        <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span class="text-sm text-gray-300">Updated website with proper SEO</span>
+      </div>
+      <div class="flex items-start gap-2">
+        <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span class="text-sm text-gray-300">Consistent profile photos across all platforms</span>
+      </div>
+      <div class="flex items-start gap-2">
+        <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span class="text-sm text-gray-300">Unified bio / description for all channels</span>
+      </div>
+      <div class="flex items-start gap-2">
+        <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span class="text-sm text-gray-300">A simple lead magnet (free guide — already drafted)</span>
+      </div>
+      <div class="flex items-start gap-2">
+        <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--gold)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span class="text-sm text-gray-300">Raw digital assets — photos and videos from Isabelle</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+// ---- ASSET FILTER ----
+function filterAssets(type) {
+  const cards = document.querySelectorAll('.asset-card');
+  cards.forEach(c => {
+    if (type === 'all') { c.style.display = ''; return; }
+    if (type === 'needed') { c.style.display = c.dataset.status === 'needed' ? '' : 'none'; return; }
+    c.style.display = c.dataset.type === type ? '' : 'none';
+  });
+  document.querySelectorAll('.asset-filter-btn').forEach(btn => {
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.classList.remove('text-white');
+    btn.classList.add('bg-gray-200','text-gray-600');
+  });
+  const active = document.getElementById('af-' + type);
+  active.classList.remove('bg-gray-200','text-gray-600');
+  active.classList.add('text-white');
+  active.style.background = 'var(--navy)';
+}
+
+// ---- TAB NAVIGATION ----
+function showPage(pageId) {
+  ['overview','website','social','campaigns','brief'].forEach(id => {
+    document.getElementById('page-' + id).classList.remove('active');
+    const tab = document.getElementById('tab-' + id);
+    tab.classList.remove('tab-active');
+    tab.classList.add('tab-inactive');
+  });
+  document.getElementById('page-' + pageId).classList.add('active');
+  const activeTab = document.getElementById('tab-' + pageId);
+  activeTab.classList.remove('tab-inactive');
+  activeTab.classList.add('tab-active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ---- POST DATA ----
+const posts = {
+  'jun2': {
+    date: 'June 2 (Tuesday)',
+    platforms: ['instagram','facebook'],
+    type: 'Quote Post',
+    typeIcon: '✏️',
+    caption: `Your nervous system isn't broken. It's been doing exactly what it was designed to do — protect you.\n\nThe question isn't "what's wrong with me?" It's "what does my body still need?" 🌿\n\nThis shift in perspective changes everything.`,
+    hashtags: '#TRE #NervousSystem #SomaticHealing #WellnessSingapore',
+    imageNote: 'Minimal quote card. Navy background, white text, small gold leaf or plant icon. Isabelle\'s name in small gold text at bottom.',
+    imagePlaceholder: '✏️ Quote Card'
+  },
+  'jun3': {
+    date: 'June 3 (Wednesday)',
+    platforms: ['instagram','tiktok'],
+    type: 'Reel',
+    typeIcon: '🎬',
+    caption: `You've tried meditation. You've done the breathwork. Still feel stuck? 🧠\n\nHere's the missing piece most people don't know about.\n\nYour stress lives in your body — not just your mind. TRE works differently.\n\nDrop a 🌿 if this resonates.`,
+    hashtags: '#TRE #SomaticHealing #StressRelief #Singapore',
+    imageNote: 'Talking head reel, 30–45 seconds. Isabelle speaking directly to camera. Soft background. Text overlay: "Why mindset work alone isn\'t enough." Auto-captions on.',
+    imagePlaceholder: '🎬 Reel — 30–45 sec'
+  },
+  'jun5': {
+    date: 'June 5 (Friday)',
+    platforms: ['instagram','facebook','tiktok'],
+    type: 'Carousel',
+    typeIcon: '🖼️',
+    caption: `5 signs your body might still be in survival mode 👇\n\nSwipe through — save this for later.\n\nComment GUIDE and I'll send you the free resource. 🌿`,
+    hashtags: '#NervousSystem #TRE #WellnessTips #SingaporeWellness',
+    imageNote: 'Carousel — 5 slides. Slide 1: bold hook "Is Your Nervous System Stuck?" Slides 2–6: one sign per slide with short explanation. Navy/gold/white palette.',
+    imagePlaceholder: '🖼️ Carousel — 5 Slides'
+  },
+  'jun7': {
+    date: 'June 7 (Sunday)',
+    platforms: ['instagram'],
+    type: 'Personal / Behind the Scenes',
+    typeIcon: '🌿',
+    caption: `Sunday mornings lately: coffee, journal, 20 minutes of TRE before the week starts. 🌿\n\nI share this not to perform wellness — but because the practice only stays real when it's genuinely lived.\n\nHow do you set up for the week? 👇`,
+    hashtags: '#SundayReset #TRE #ConsciousLiving',
+    imageNote: 'Warm, natural photo. Morning light. Coffee cup, journal on a wooden table. Relaxed, unposed feel. No heavy editing.',
+    imagePlaceholder: '☕ Lifestyle Photo'
+  },
+  'jun9': {
+    date: 'June 9 (Tuesday)',
+    platforms: ['instagram','tiktok'],
+    type: 'Reel',
+    typeIcon: '🎬',
+    caption: `People always ask: "Is the tremoring... weird?"\n\nHonestly? The first time, yes 😄\n\nThen it becomes the most natural thing.\n\nHere's exactly what happens in a session. 🌿`,
+    hashtags: '#TRE #SomaticHealing #WhatIsTRE #Singapore',
+    imageNote: 'Reel — 45–60 seconds. Isabelle walking through what a TRE session looks like. Can include brief demo of TRE exercises. Keep it calm and reassuring.',
+    imagePlaceholder: '🎬 Reel — 45–60 sec'
+  },
+  'jun10': {
+    date: 'June 10 (Wednesday)',
+    platforms: ['instagram','facebook'],
+    type: 'Testimonial',
+    typeIcon: '⭐',
+    caption: `"I slept through the night for the first time in three years."\n— Singapore corporate leader, after 3 TRE sessions.\n\n🌿 TRE isn't something I do TO people. It's something the body does when it finally feels safe.\n\nFree guide → link in bio.`,
+    hashtags: '#TRE #ClientResults #SleepBetter #BurnoutRecovery',
+    imageNote: 'Quote card design. Dark navy background, large quotation marks in gold, white quote text. Small "Client testimonial, name withheld" note. Elegant and credible.',
+    imagePlaceholder: '⭐ Testimonial Card'
+  },
+  'jun12': {
+    date: 'June 12 (Friday)',
+    platforms: ['instagram','facebook','tiktok'],
+    type: 'Carousel',
+    typeIcon: '🖼️',
+    caption: `I'm not here to dismiss what you've tried.\n\nTherapy, meditation, exercise — all valuable 🙏\n\nBut they work top-down (mind to body). TRE works bottom-up.\n\nSwipe to see why that matters. 🌿`,
+    hashtags: '#TRE #SomaticHealing #Wellness',
+    imageNote: 'Carousel — 4–5 slides. Comparison style: "What you\'ve tried" vs "What TRE adds". Simple icons and short text per slide. Not dismissive, additive framing.',
+    imagePlaceholder: '🖼️ Carousel — 4–5 Slides'
+  },
+  'jun14': {
+    date: 'June 14 (Sunday)',
+    platforms: ['instagram'],
+    type: 'Quote',
+    typeIcon: '✏️',
+    caption: `The body keeps the score. But the body can also release it. 🌿\n\nThis is everything.`,
+    hashtags: '#SomaticHealing #TRE #TraumaRecovery #NervousSystemHealth',
+    imageNote: 'Minimal quote card. Could be a nature photo background (soft forest, leaves, water) with white text overlay. Short and powerful — let the words breathe.',
+    imagePlaceholder: '✏️ Quote Card'
+  },
+  'jun17': {
+    date: 'June 17 (Wednesday)',
+    platforms: ['instagram','facebook','tiktok'],
+    type: 'Event Announcement',
+    typeIcon: '📅',
+    caption: `🌿 Module 1 TRE Provider Training | Singapore | August 29–30, 2026\n\nBecome a certified TRE Provider in 2 days.\n\nFor coaches, therapists, HR professionals, and anyone called to this work.\n\nPrevious cohorts: SOLD OUT.\n\nLink in bio to register.`,
+    hashtags: '#TRECertification #Singapore #SomaticCoach #WellnessTraining',
+    imageNote: 'Event announcement card. Navy background, gold date text, white body text. BHD Asia logo. Professional but warm. Can also use a photo of a past cohort (group shot) if available.',
+    imagePlaceholder: '📅 Event Card'
+  },
+  'jun19': {
+    date: 'June 19 (Friday)',
+    platforms: ['instagram','tiktok'],
+    type: 'Reel',
+    typeIcon: '🎬',
+    caption: `3 things I wish someone told me before my first TRE session 🌿\n\nWould have saved me a LOT of googling 😄\n\nDrop a ❓ if you still have questions.`,
+    hashtags: '#TRE #FirstTimeTRE #SomaticHealing #WellnessTips',
+    imageNote: 'Talking head reel, 30–45 seconds. Conversational, light tone. Isabelle sits or stands naturally. Text overlays for each of the 3 tips.',
+    imagePlaceholder: '🎬 Reel — 30–45 sec'
+  },
+  'jun21': {
+    date: 'June 21 (Sunday)',
+    platforms: ['instagram','facebook'],
+    type: 'Personal',
+    typeIcon: '🌞',
+    caption: `Today is the solstice — the turning point. ☀️\n\nWhatever season your nervous system is in right now — contraction or expansion — it's the right one.\n\nTrust your body. 🌿`,
+    hashtags: '#Solstice #NervousSystem #TRE #BHDAsia',
+    imageNote: 'Soft nature image — sunrise, or a forest scene. Warm tones. Could be a personal photo of Isabelle outdoors. Light editing only.',
+    imagePlaceholder: '☀️ Nature / Personal Photo'
+  },
+  'jun24': {
+    date: 'June 24 (Wednesday)',
+    platforms: ['instagram','facebook','tiktok'],
+    type: 'Social Proof',
+    typeIcon: '💫',
+    caption: `She came to Module 1 as a coach who had tried everything for her own burnout.\n\nShe left as a certified TRE Provider with a completely new lens on her practice. 🌿\n\nModule 1 Singapore — August 29–30. Spots limited.\n\nLink in bio.`,
+    hashtags: '#TRECertification #CoachLife #SomaticCoach #Singapore',
+    imageNote: 'Photo from a past Module 1 cohort — group shot or trainer-participant moment. If no photo, use a warm testimonial card with the story. Caption: "Client story shared with permission."',
+    imagePlaceholder: '💫 Social Proof Card'
+  },
+  'jun26': {
+    date: 'June 26 (Friday)',
+    platforms: ['instagram','facebook','tiktok'],
+    type: 'Urgency Post',
+    typeIcon: '🔴',
+    caption: `🔴 A small number of spots remain for Module 1 — August 29–30, Singapore.\n\nThe last 3 cohorts sold out.\n\nIf you've been sitting with this — this is the sign. 🌿\n\nDM me MODULE1 or click the link in bio.`,
+    hashtags: '#TRE #TRECertification #LastSpots #Singapore',
+    imageNote: 'Bold, clean urgency design. Could use a red dot/badge. Navy background with white and gold text. "Spots Remaining" counter if known. Professional but urgent.',
+    imagePlaceholder: '🔴 Urgency Card'
+  },
+  'jun28': {
+    date: 'June 28 (Sunday)',
+    platforms: ['instagram'],
+    type: 'Personal Close',
+    typeIcon: '💙',
+    caption: `June is almost done.\n\nThank you for being here and for caring about this.\n\nThe world gets safer — one regulated nervous system at a time.\n\nSee you in July. 💙`,
+    hashtags: '#TRE #NervousSystem #BHDAsia #Singapore',
+    imageNote: 'Warm personal photo — Isabelle, nature, or simple aesthetic. Reflective and genuine. No hard sell. This post is for connection.',
+    imagePlaceholder: '💙 Personal / Closing Photo'
+  },
+  'jun30': {
+    date: 'June 30 (Tuesday)',
+    platforms: ['instagram','facebook','tiktok'],
+    type: 'Reel',
+    typeIcon: '🎬',
+    caption: `Last day of June.\n\nOne question: what does your body need more of right now? 🌿\n\nComment below — I read every one.`,
+    hashtags: '#TRE #SomaticHealing #JuneWrapUp #Singapore',
+    imageNote: 'Short reel or simple talking head. Reflective, community-focused. Isabelle directly asks the question to camera. Encourages genuine engagement in comments.',
+    imagePlaceholder: '🎬 Reel — 20–30 sec'
+  }
+};
+
+// ---- CALENDAR DATA ----
+// Weekly rhythm: Instagram = Mon/Wed/Fri | TikTok = Tue/Thu/Sat | Facebook = Mon/Wed/Sun
+// Mon & Wed: IG + FB post same content (repurposed). Sun = FB only. Fri = IG only. Tue/Thu/Sat = TT only.
+const calendarDays = {
+  1:  [{ platform:'ig', label:'Quote Post',       key:'jun2'  }, { platform:'fb', label:'Quote Post',       key:'jun2'  }],
+  2:  [{ platform:'tt', label:'Reel',             key:'jun3'  }],
+  3:  [{ platform:'ig', label:'Carousel',         key:'jun5'  }, { platform:'fb', label:'Carousel',         key:'jun5'  }],
+  4:  [{ platform:'tt', label:'Reel',             key:'jun3'  }],
+  5:  [{ platform:'ig', label:'Personal',         key:'jun7'  }],
+  6:  [{ platform:'tt', label:'Educational',      key:'jun3'  }],
+  7:  [{ platform:'fb', label:'Reflection',       key:'jun7'  }],
+  8:  [{ platform:'ig', label:'Reel',             key:'jun9'  }, { platform:'fb', label:'Reel',             key:'jun9'  }],
+  9:  [{ platform:'tt', label:'TRE Session',      key:'jun9'  }],
+  10: [{ platform:'ig', label:'Testimonial',      key:'jun10' }, { platform:'fb', label:'Testimonial',      key:'jun10' }],
+  11: [{ platform:'tt', label:'Testimonial',      key:'jun10' }],
+  12: [{ platform:'ig', label:'Carousel',         key:'jun12' }],
+  13: [{ platform:'tt', label:'Quick Tip',        key:'jun9'  }],
+  14: [{ platform:'fb', label:'Quote',            key:'jun14' }],
+  15: [{ platform:'ig', label:'Module 1 Promo',   key:'jun17' }, { platform:'fb', label:'Module 1 Promo',   key:'jun17' }],
+  16: [{ platform:'tt', label:'My Story',         key:'jun19' }],
+  17: [{ platform:'ig', label:'Module 1 Details', key:'jun17' }, { platform:'fb', label:'Module 1 Details', key:'jun17' }],
+  18: [{ platform:'tt', label:'Module 1 Reel',    key:'jun17' }],
+  19: [{ platform:'ig', label:'Reel',             key:'jun19' }],
+  20: [{ platform:'tt', label:'TRE Tip',          key:'jun19' }],
+  21: [{ platform:'fb', label:'Solstice Post',    key:'jun21' }],
+  22: [{ platform:'ig', label:'Social Proof',     key:'jun24' }, { platform:'fb', label:'Social Proof',     key:'jun24' }],
+  23: [{ platform:'tt', label:'Urgency Reel',     key:'jun26' }],
+  24: [{ platform:'ig', label:'Last Spots',       key:'jun24' }, { platform:'fb', label:'Last Spots',       key:'jun24' }],
+  25: [{ platform:'tt', label:'Q&A',              key:'jun28' }],
+  26: [{ platform:'ig', label:'Final Push',       key:'jun26' }],
+  27: [{ platform:'tt', label:'Book Now',         key:'jun26' }],
+  28: [{ platform:'fb', label:'Month Close',      key:'jun28' }],
+  29: [{ platform:'ig', label:'Month Wrap',       key:'jun30' }, { platform:'fb', label:'Month Wrap',       key:'jun30' }],
+  30: [{ platform:'tt', label:'Final Reel',       key:'jun30' }]
+};
+
+// ---- BUILD CALENDAR ----
+const platformCfg = {
+  ig: { bg:'linear-gradient(135deg,#f09433,#bc1888)', label:'IG', border:'#e6683c', rowBg:'#fff8f3' },
+  tt: { bg:'#010101',  label:'TT', border:'#333',    rowBg:'#f7f7f7' },
+  fb: { bg:'#1877F2',  label:'FB', border:'#1877F2', rowBg:'#f0f5ff' }
+};
+
+function buildCalendar() {
+  const tbody = document.getElementById('calendar-body');
+  const startDay = 0; // June 1 = Monday
+  let html = '';
+  let cellCount = 0;
+
+  for (let row = 0; row < 5; row++) {
+    html += '<tr>';
+    for (let col = 0; col < 7; col++) {
+      const dayNum = cellCount - startDay + 1;
+      const isWeekend = col >= 5;
+      const weekendBg = isWeekend ? 'background:#F5F7FA;' : '';
+
+      if (dayNum < 1 || dayNum > 30) {
+        html += `<td class="cal-cell p-1.5 border border-gray-100" style="${weekendBg}"></td>`;
+      } else {
+        const dayPosts = calendarDays[dayNum];
+        if (dayPosts && dayPosts.length > 0) {
+          const rows = dayPosts.map(p => {
+            const cfg = platformCfg[p.platform];
+            return `<div class="cal-row rounded mb-1 px-2 py-1.5" onclick="openPostModal('${p.key}','${p.platform}')" style="border-left:4px solid ${cfg.border};background:${cfg.rowBg}">
+              <span class="text-white font-bold rounded px-1.5 py-0.5 mr-1" style="font-size:0.6rem;background:${cfg.bg}">${cfg.label}</span>
+              <span class="font-semibold" style="font-size:0.72rem;color:var(--navy)">${p.label}</span>
+            </div>`;
+          }).join('');
+          html += `<td class="cal-cell p-2 border border-gray-100">
+            <div class="text-right font-bold mb-1.5" style="font-size:0.8rem;color:var(--gold)">${dayNum}</div>
+            ${rows}
+          </td>`;
+        } else {
+          html += `<td class="cal-cell p-2 border border-gray-100" style="${weekendBg}">
+            <div class="text-right font-medium text-gray-400" style="font-size:0.8rem">${dayNum}</div>
+          </td>`;
+        }
+      }
+      cellCount++;
+    }
+    html += '</tr>';
+  }
+  tbody.innerHTML = html;
+}
+
+// ---- CONTENT TYPE MODAL SAMPLES ----
+const contentSamples = {
+  educational: {
+    platform: 'instagram',
+    platformName: 'Instagram',
+    type: 'Educational Post',
+    imagePlaceholder: '📚 Carousel — 5 Slides',
+    caption: `Why your nervous system remembers things your mind has "moved on" from 🌿\n\nYou've processed the event. You've talked about it. You've journaled.\n\nBut your body still tenses in certain situations. Still wakes you at 3am. Still gets hypervigilant.\n\nHere's why:\n\nYour nervous system stores stress as body memory — not just mental memory. It keeps a physical record to protect you next time.\n\nTRE (Tension & Trauma Releasing Exercises) helps the body complete that stress cycle. To literally shake it loose.\n\nSave this if it resonates. 🌿`,
+    hashtags: '#TRE #NervousSystem #SomaticHealing #TraumaRecovery #WellnessSingapore #BodyMemory',
+    imageNote: 'Carousel — 5 slides. Slide 1: hook question. Slides 2–4: explanation of body memory vs mental memory. Slide 5: what TRE does. Clean text-based cards. Navy/white/gold.'
+  },
+  personal: {
+    platform: 'instagram',
+    platformName: 'Instagram',
+    type: 'Personal Story',
+    imagePlaceholder: '💬 Personal Photo / Story Card',
+    caption: `Three years ago I sat in my first TRE session not knowing what to expect.\n\nI had tried everything — therapy, breathwork, journaling. I was a coach helping others heal. But my own nervous system was still running on overdrive.\n\nThe tremoring felt strange. Then it felt like something I hadn't felt in years: relief.\n\nNot fixed. Just... lighter.\n\nThat's what I want for everyone who comes to me. Not a cure. Just the beginning of a different relationship with your own body. 🌿`,
+    hashtags: '#TRE #PersonalJourney #SomaticHealing #Burnout #IsabelleClaus #BHDAsia',
+    imageNote: 'Personal, authentic photo of Isabelle — not overly posed. Outdoors or a natural setting. Warm and approachable. Could be a journal, nature walk, or simple portrait.'
+  },
+  reel: {
+    platform: 'tiktok',
+    platformName: 'TikTok',
+    type: 'Reel / Video',
+    imagePlaceholder: '🎬 Reel — 45 seconds',
+    caption: `The nervous system science no one explained to me in school 🧠\n\nWhen you're stressed, your body doesn't just think about it — it braces for impact. Muscles tighten. Breath shortens. Digestion slows.\n\nIf the stress happens again and again, the body stays in that braced position. Even when the threat is gone.\n\nTRE is the practice of inviting the nervous system back to "safe." Not through thoughts. Through the body itself.\n\n#LearnOnTikTok 🌿`,
+    hashtags: '#TRE #NervousSystem #SomaticHealing #LearnOnTikTok #WellnessEducation #Singapore',
+    imageNote: 'Reel — 45 sec. Fast-paced, educational. Isabelle to camera with text overlays explaining each point. Add trending audio underneath. Auto-captions essential. Hook in first 2 seconds.'
+  },
+  event: {
+    platform: 'facebook',
+    platformName: 'Facebook',
+    type: 'Event Promo',
+    imagePlaceholder: '📅 Event Promo — August 29–30',
+    caption: `📣 Module 1 TRE Provider Training — Singapore — August 29–30, 2026\n\nThis is for coaches, therapists, psychologists, HR professionals, and anyone who wants to add a powerful somatic tool to their practice.\n\nIn 2 days, you will:\n✓ Become a certified TRE Provider\n✓ Learn directly from Isabelle — one of the only TRE Global Certifying Trainers in Asia\n✓ Experience TRE yourself\n✓ Be ready to start working with clients\n\nThe last 3 cohorts sold out. Early registration is open now.\n\n👉 Link in bio — or DM us "MODULE1" to get the details.`,
+    hashtags: '#TRECertification #Singapore #SomaticCoach #WellnessTraining #NervousSystem #Module1',
+    imageNote: 'Professional event card. Navy background, gold date highlight, BHD Asia branding. Photo of Isabelle presenting to a group (past cohort photo preferred). Add Facebook Event link.'
+  },
+  testimonial: {
+    platform: 'instagram',
+    platformName: 'Instagram',
+    type: 'Testimonial',
+    imagePlaceholder: '⭐ Testimonial Quote Card',
+    caption: `"For years I thought the anxiety was just... me. My personality. Something I had to manage.\n\nAfter 6 TRE sessions, I realised: my nervous system was stuck. It wasn't who I am.\n\nThat distinction changed everything."\n\n— Senior manager, Singapore, 38\n\n🌿 TRE doesn't change you. It helps you come home to yourself.\n\nFree guide in bio.`,
+    hashtags: '#TRE #ClientStory #AnxietyRelief #NervousSystem #SomaticHealing #Singapore',
+    imageNote: 'Quote card design. Elegant — large quote marks in gold, navy background, white text. Small "Shared with permission, name withheld" disclaimer at the bottom in smaller text.'
+  }
+};
+
+// ---- OPEN MODAL: Content Type Sample ----
+function openContentModal(type) {
+  const data = contentSamples[type];
+  if (!data) return;
+  renderModal(data);
+}
+
+// ---- OPEN MODAL: Calendar Post ----
+function openPostModal(key, pl) {
+  const p = posts[key];
+  if (!p) return;
+  const platformMap = { ig:'instagram', tt:'tiktok', fb:'facebook' };
+  const platform = platformMap[pl] || p.platform || 'instagram';
+  const platformName = platform === 'instagram' ? 'Instagram' : platform === 'tiktok' ? 'TikTok' : 'Facebook';
+  renderModal({
+    platform,
+    platformName,
+    type: p.type,
+    imagePlaceholder: p.imagePlaceholder,
+    caption: p.caption,
+    hashtags: p.hashtags,
+    imageNote: p.imageNote,
+    date: p.date,
+    allPlatforms: platformName
+  });
+}
+
+function renderModal(data) {
+  const platformClass = data.platform === 'instagram' ? 'platform-instagram' : data.platform === 'tiktok' ? 'platform-tiktok' : 'platform-facebook';
+  const formattedCaption = (data.caption || '').replace(/\n/g, '<br/>');
+  const modal = document.getElementById('modal-card');
+  modal.innerHTML = `
+    <div class="${platformClass} p-3 rounded-t-2xl flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-white font-bold text-sm">${data.platformName}</span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-white bg-opacity-20 text-white">${data.type}</span>
+        ${data.date ? `<span class="text-xs text-white opacity-75">${data.date}</span>` : ''}
+      </div>
+      <button onclick="closeModal()" class="text-white text-lg font-bold leading-none opacity-80 hover:opacity-100 transition-opacity">✕</button>
+    </div>
+    <!-- Profile Row -->
+    <div class="px-4 pt-3 pb-2 flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style="background:var(--navy)">I</div>
+      <div>
+        <div class="text-xs font-bold" style="color:var(--navy)">Isabelle | BHD Asia</div>
+        <div class="text-xs text-gray-400">TRE Global Certifying Trainer</div>
+      </div>
+      ${data.allPlatforms ? `<div class="ml-auto text-xs text-gray-400">${data.allPlatforms}</div>` : ''}
+    </div>
+    <!-- Image Placeholder -->
+    <div class="mx-4 rounded-xl flex items-center justify-center h-44" style="background:linear-gradient(135deg,#0A1628,#1a3a5c)">
+      <div class="text-center">
+        <svg class="w-8 h-8 mb-2 opacity-40" style="color:#C9A84C" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div class="text-xs text-gray-300 px-4">${data.imagePlaceholder || 'Image placeholder'}</div>
+      </div>
+    </div>
+    <!-- Caption -->
+    <div class="px-4 pt-3">
+      <p class="text-xs text-gray-800 leading-relaxed">${formattedCaption}</p>
+      <p class="text-xs mt-2" style="color:#1877F2">${data.hashtags || ''}</p>
+    </div>
+    <!-- Like / Comment / Share (decorative) -->
+    <div class="px-4 py-3 flex items-center gap-4 border-t border-gray-100 mt-3">
+      <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </div>
+    <!-- Designer Notes (accordion) -->
+    <div class="px-4 pb-4">
+      <button onclick="toggleAccordion('designer-notes')" class="w-full text-left text-xs font-semibold text-gray-500 flex items-center justify-between py-2 border-t border-gray-100">
+        <span>Designer Notes</span>
+        <span id="accordion-icon" class="text-gray-400">▼</span>
+      </button>
+      <div id="designer-notes" class="accordion-content">
+        <div class="mt-2 p-3 rounded-lg bg-gray-50 text-xs text-gray-600 leading-relaxed">${data.imageNote || 'No designer notes.'}</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('post-modal').classList.add('open');
+}
+
+function toggleAccordion(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  const icon = document.getElementById('accordion-icon');
+  if (icon) icon.textContent = el.classList.contains('open') ? '▲' : '▼';
+}
+
+function closeModal() {
+  document.getElementById('post-modal').classList.remove('open');
+}
+
+function closeModalOnOverlay(event) {
+  if (event.target === document.getElementById('post-modal')) {
+    closeModal();
+  }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ---- INIT ----
+buildCalendar();
+</script>
+</body>
+</html>
