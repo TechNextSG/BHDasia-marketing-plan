@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Isabelle — Questions & Checklist | TechNext</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { --navy:#0A1628; --gold:#C9A84C; --bg:#F8F9FB; }
+  body { background:var(--bg); font-family:'Segoe UI',system-ui,sans-serif; }
+  .tab-active { border-bottom:3px solid var(--gold); color:var(--gold); font-weight:700; }
+  .tab-inactive { border-bottom:3px solid transparent; color:#6B7280; }
+  .tab-inactive:hover { color:var(--navy); }
+  .page { display:none; }
+  .page.active { display:block; }
+  .check-row { cursor:pointer; transition:background 0.15s; }
+  .check-row:hover { background:#f1f5f9; }
+  .check-row.done { background:#f0fdf4; }
+  .check-row.done .q-text { text-decoration:line-through; color:#9ca3af; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.65rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- HEADER -->
+<header style="background:var(--navy)" class="sticky top-0 z-50">
+  <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white" style="background:var(--gold)">I</div>
+      <span class="text-white font-semibold text-sm">Isabelle — Marketing Questions & Checklist</span>
+    </div>
+    <span class="text-gray-400 text-xs hidden sm:block">Prepared by TechNext</span>
+  </div>
+  <div class="max-w-4xl mx-auto px-4 border-t border-gray-700">
+    <nav class="flex gap-1">
+      <button onclick="showPage('ask')" id="tab-ask" class="tab-active text-sm px-4 py-3 whitespace-nowrap transition-colors">Questions to Ask</button>
+      <button onclick="showPage('answered')" id="tab-answered" class="tab-inactive text-sm px-4 py-3 whitespace-nowrap transition-colors">Already Answered</button>
+    </nav>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="max-w-4xl mx-auto px-4 pt-4" id="progress-wrap">
+  <div class="bg-white rounded-2xl p-4 shadow-sm flex items-center gap-4">
+    <div class="flex-1">
+      <div class="flex justify-between text-xs font-semibold mb-1" style="color:var(--navy)">
+        <span>Questions Answered</span>
+        <span id="prog-label">0 / 0</span>
+      </div>
+      <div class="h-2 rounded-full bg-gray-200 overflow-hidden">
+        <div id="prog-bar" class="h-2 rounded-full transition-all duration-300" style="background:var(--gold);width:0%"></div>
+      </div>
+    </div>
+    <button onclick="resetAll()" class="text-xs text-gray-400 hover:text-red-500 transition-colors ml-2">Reset</button>
+  </div>
+</div>
+
+<!-- ===== PAGE 1: QUESTIONS TO ASK ===== -->
+<section id="page-ask" class="page active max-w-4xl mx-auto px-4 py-6">
+
+  <div class="mb-6">
+    <h1 class="text-2xl font-extrabold mb-1" style="color:var(--navy)">Questions for Isabelle</h1>
+    <p class="text-sm text-gray-500">Everything needed to run marketing for BHD Asia and HummingBeing. Click a question to mark it answered.</p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="badge text-white" style="background:var(--navy)">BHD Asia</span>
+      <span class="badge text-white" style="background:#7C3AED">HummingBeing</span>
+      <span class="badge text-white bg-gray-500">Both</span>
+    </div>
+  </div>
+
+  <!-- BRAND & IDENTITY -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:var(--gold)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Brand & Identity</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you send us the official logo files for both BHD Asia and HummingBeing — PNG with transparent background?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have official brand colors (hex codes) and fonts for each brand? Or are we creating them from scratch?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:var(--navy)">BHD Asia</span></div><p class="q-text text-sm text-gray-800">How do you want people to describe BHD Asia in one sentence — what is the tagline or positioning you want?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">How do you want people to describe HummingBeing in one sentence — what feeling or result should the brand name give?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Who are 2–3 coaches or practitioners you admire online? We'll use these as style references.</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Who are your main competitors — other TRE trainers or executive coaches in Singapore/Asia you see often?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- WEBSITE ACCESS -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:var(--navy)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Website & Technical Access</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:var(--navy)">BHD Asia</span></div><p class="q-text text-sm text-gray-800">Can you give us admin/editor access to the BHD Asia website? What platform is it on (WordPress, Wix, Squarespace)?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">Can you give us admin/editor access to the HummingBeing website?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have Google Analytics set up on both websites? If yes, can you give us access? If not, we'll set it up.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have Google Search Console set up for both domains? This is what shows us how Google sees your sites.</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Who manages your domain names? Can we have access to the domain settings?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- SOCIAL MEDIA ACCESS -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#E1306C">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Social Media Access</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">Your Instagram "personal growth with Isabelle" — do you want to rename it to HummingBeing? Can you give us admin access?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:var(--navy)">BHD Asia</span></div><p class="q-text text-sm text-gray-800">Can you add us as admin to your Facebook BHD Asia page? We need this to post and run ads.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-800">TikTok</span></div><p class="q-text text-sm text-gray-800">You downloaded TikTok — do you want us to set up a TikTok account? Which brand — HummingBeing, BHD Asia, or both?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#0077B5">LinkedIn</span></div><p class="q-text text-sm text-gray-800">Do you want us to help manage your LinkedIn? That's the main channel for reaching corporate clients for BHD Asia.</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have a Facebook Business Manager account? We need this before we can run any Facebook or Instagram ads.</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Services & Offerings</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you write a short description for each service in your own words? We'll use this for website copy and social posts.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">For each service — is it in-person, online, or both? What countries or time zones can you serve?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">How do people book or contact you for each service — WhatsApp, email, form, or Calendly?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you want to show pricing on the website, or keep it as "contact for pricing"?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">For TRE Module 1 — what do participants get at the end? Certificate, ICF CPD hours, what level of practice rights?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">What is the difference between TRE Module 1, 2, and 3 — explained simply for someone who has never heard of TRE?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:var(--navy)">BHD Asia</span></div><p class="q-text text-sm text-gray-800">For corporate programs — typical format? (Half-day, full day, multi-session?) What outcome does the company get?</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">For retreats in 2027 — do you have a location in mind, approximate dates, and what the experience will include?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- CONTENT & ASSETS -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#DC2626">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Content & Raw Assets</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you send us your best professional headshot photos — 3–5 photos on a clean background?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">Do you have photos or videos from past TRE workshops we can use? (With participant consent.)</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Are you comfortable filming short videos at home — just talking to the camera for 1–2 minutes? We will write the script for you.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have 2–3 real client stories (anonymized) we can use as case study posts? Just the situation, what happened, and the result.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have any written testimonials or client feedback we can use — even informal WhatsApp messages?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you give us view-only access to your Canva — to see all your past presentations and training materials?</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you send scans or photos of all your certificates — ICF, TRE, Reiki, mindfulness, and any others?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- TARGET AUDIENCE -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#7C3AED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="white" stroke="none"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Target Audience</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:var(--navy)">BHD Asia</span></div><p class="q-text text-sm text-gray-800">For corporate clients — which industries do you prefer? (Tech, finance, FMCG, healthcare, etc.?)</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:var(--navy)">BHD Asia</span></div><p class="q-text text-sm text-gray-800">Who is the decision maker that hires you — HR, L&D, the CEO, or the individual manager themselves?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">Who typically signs up for TRE certification — coaches, therapists, HR professionals, or people from other backgrounds?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">What is the main reason someone books a 1-on-1 session with you — what problem are they trying to solve?</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">How do most of your current clients find you — word of mouth, LinkedIn, Google, events, or referrals?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- CONTENT RULES -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#0891B2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Content Rules & Preferences</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">What topics should we NEVER post or talk about publicly? (e.g. shamanic work, specific client names, medical claims about TRE.)</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Are you comfortable showing personal moments on social media — your cats, home, travel, life outside work?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">For HummingBeing content — calm and healing, energetic and motivating, or professional and credibility-focused?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">How often can you review and approve content before we post — daily, weekly, or do you want to approve everything?</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Should content be in English only, or do you also want French or other languages for international clients?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- EVENTS & BOOKINGS -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#EA580C">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Events & Bookings</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">For TRE Module 1 (Aug 29–30) — what is the venue address, and how do you want people to register? Eventbrite, email, or website form?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">For TRE Module 2 (Sept 26–27) — venue, registration method, and who can attend (only Module 1 graduates)?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you currently accept online payments, or is everything by invoice? Do you want to set up online payment for workshops?</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Any other events or programs planned for the rest of 2026 we should know about and promote?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- EMAIL & LEADS -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#0891B2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Email & Warm Leads</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you share the Google Sheet with your 47 warm leads? We want to create a proper follow-up campaign for them.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Did those 47 contacts give consent to receive marketing emails? Or do we need to approach them differently?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">What email did you use to contact them before — and what did you say? We want to avoid repeating the same message.</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you use any email marketing tool (Mailchimp, Kit, etc.)? Are you open to us setting one up?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- PAID ADS -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#1877F2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">Paid Ads (When Ready)</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Do you have a Facebook Business Manager account set up? This is required before running any ads.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">When you are ready for ads — what monthly budget are you comfortable with? (Even a rough range like $200–$500/month.)</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">For the first campaign — promote TRE certification, 1-on-1 coaching, or a free intro event like the public TRE session?</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- PERSONAL -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#6B7280">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h2 class="text-base font-extrabold" style="color:var(--navy)">About Isabelle</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Can you write your bio — short version (3 sentences) and long version (1 paragraph)? One for each brand — the tone will be different.</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">What are 3–5 things that make you different from other coaches or TRE trainers in Singapore — things you're proud of?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white" style="background:#7C3AED">HummingBeing</span></div><p class="q-text text-sm text-gray-800">Would you be open to a regular podcast or weekly video series — where we ask you questions and you answer on camera?</p></div></div></div>
+      <div class="check-row px-5 py-3.5 border-b border-gray-100" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">What does success look like for you at the end of 2026 — new clients, visibility, revenue, or something else?</p></div></div></div>
+      <div class="check-row px-5 py-3.5" onclick="toggle(this)"><div class="flex items-start gap-3"><input type="checkbox" class="mt-0.5 flex-shrink-0 accent-yellow-500" onclick="event.stopPropagation()"><div class="flex-1"><div class="mb-0.5"><span class="badge text-white bg-gray-500">Both</span></div><p class="q-text text-sm text-gray-800">Is there anything you are nervous or unsure about with this marketing project — things you want us to be careful about?</p></div></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== PAGE 2: ALREADY ANSWERED ===== -->
+<section id="page-answered" class="page max-w-4xl mx-auto px-4 py-6">
+  <div class="mb-6">
+    <h1 class="text-2xl font-extrabold mb-1" style="color:var(--navy)">Already Answered</h1>
+    <p class="text-sm text-gray-500">From the May 27, 2026 meeting. No need to ask again — just confirm if anything has changed.</p>
+    <div class="mt-3 p-3 rounded-xl border border-green-200 bg-green-50 text-xs text-green-800 flex items-start gap-2">
+      <svg class="w-4 h-4 flex-shrink-0 mt-0.5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Use this as your briefing before the next meeting with Isabelle.
+    </div>
+  </div>
+  <div class="space-y-4">
+
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="px-5 py-3 bg-green-50 border-b border-gray-100"><p class="text-xs font-bold uppercase tracking-widest text-green-700">Brand Strategy</p></div>
+      <ul class="divide-y divide-gray-100 text-sm text-gray-700">
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Two separate brands:</strong> BHD Asia = corporate/professional. HummingBeing = healing, TRE, personal growth for professionals.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>BHD Asia website</strong> = static, professional, not heavy SEO. Only updated when there's a big corporate proposal.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>HummingBeing</strong> is the main marketing focus in 2026.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Shamanic work & Reiki</strong> — NOT to be mixed with BHD Asia corporate messaging. Keep fully separate.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>BHD Asia = LinkedIn-first.</strong> Articles and posts for HR, L&D, and senior management.</p></li>
+      </ul>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="px-5 py-3 bg-green-50 border-b border-gray-100"><p class="text-xs font-bold uppercase tracking-widest text-green-700">Target Audience</p></div>
+      <ul class="divide-y divide-gray-100 text-sm text-gray-700">
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Corporate target:</strong> Mid-management to C-suite, 35–55 years old. High performers who are burning out, in toxic environments, or struggling to sustain performance without breaking down.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>HummingBeing target:</strong> Professionals, entrepreneurs, coaches who want help but don't want their company to know. They find Isabelle privately.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>NOT targeting:</strong> Life coaching for relationship/personal crises. Her niche is ambitious professionals with career goals.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>TRE certification audience:</strong> Coaches (esp. New Fields graduates wanting ICF CPD credits), yoga teachers, Pilates instructors, psychologists, somatic therapists.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Geography:</strong> Singapore primary, but fully global — Asia, Europe, US. No geographic restriction. Time zone is the only limit.</p></li>
+      </ul>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="px-5 py-3 bg-green-50 border-b border-gray-100"><p class="text-xs font-bold uppercase tracking-widest text-green-700">Services & Events</p></div>
+      <ul class="divide-y divide-gray-100 text-sm text-gray-700">
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>TRE Module 1:</strong> Aug 29–30, 2026. Max 9 solo, up to 25 with co-trainer Simba. Target = min. 6 registrations. 1 already committed.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>TRE Module 2:</strong> Sept 26–27, 2026.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>TRE Module 3 cohort:</strong> Sept 5–6 — 14 people finishing. (Already running, not to be promoted.)</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Retreats:</strong> 2027 — leads in Bali and Koh Samui. 6–12 people. For corporate professionals. Start building waitlist now.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>ICF accreditation:</strong> TRE Module 1 is ICF-accredited (April 2026). Coaches earn CPD hours. Modules 2 & 3 planned for 2027.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Corporate programs:</strong> No more pure HR/performance management. Focus = leadership mindset, culture, self-awareness, resilience, psychological safety.</p></li>
+      </ul>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="px-5 py-3 bg-green-50 border-b border-gray-100"><p class="text-xs font-bold uppercase tracking-widest text-green-700">Social Media & Content</p></div>
+      <ul class="divide-y divide-gray-100 text-sm text-gray-700">
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Instagram:</strong> Has "personal growth with Isabelle" — wants to rename to HummingBeing.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Facebook:</strong> Has BHD Asia page — never actively used. Needs activation.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>TikTok:</strong> Downloaded but no content yet. Open to starting.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Content creation:</strong> She needs to be told what to say and given a script. Open to video if guided. Has imposter syndrome.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Cats:</strong> She has cute cats. Open to using them for Instagram engagement content.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Podcast:</strong> Open to video format — you ask questions, she answers on camera. Good for TikTok clips and Reels.</p></li>
+      </ul>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div class="px-5 py-3 bg-green-50 border-b border-gray-100"><p class="text-xs font-bold uppercase tracking-widest text-green-700">Leads, Ads & Timeline</p></div>
+      <ul class="divide-y divide-gray-100 text-sm text-gray-700">
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>47 warm leads</strong> in a Google Sheet — names, emails, some phone numbers. People who attended a session or expressed interest but never registered.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>2026 = organic only.</strong> No paid ads needed. Goal is just ~6 people for Module 1. Activate the 47 leads first.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Canva access:</strong> She agreed to give Sky view access to years of training presentations. Need to follow up and get this.</p></li>
+        <li class="px-5 py-3.5 flex items-start gap-3"><svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Availability 2026:</strong> June–August open. Oct possibly Romania. Nov–Dec away 6 weeks for anniversary. No rush — flexible timeline.</p></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function showPage(id) {
+  ['ask','answered'].forEach(p => {
+    document.getElementById('page-'+p).classList.remove('active');
+    document.getElementById('tab-'+p).className = 'tab-inactive text-sm px-4 py-3 whitespace-nowrap transition-colors';
+  });
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('tab-'+id).className = 'tab-active text-sm px-4 py-3 whitespace-nowrap transition-colors';
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateProgress();
+}
+function toggle(row) {
+  row.classList.toggle('done');
+  const cb = row.querySelector('input[type=checkbox]');
+  if (cb) cb.checked = row.classList.contains('done');
+  saveState(); updateProgress();
+}
+function updateProgress() {
+  const all = document.querySelectorAll('#page-ask .check-row');
+  const done = document.querySelectorAll('#page-ask .check-row.done');
+  const pct = all.length ? Math.round(done.length/all.length*100) : 0;
+  document.getElementById('prog-label').textContent = done.length + ' / ' + all.length;
+  document.getElementById('prog-bar').style.width = pct + '%';
+}
+function saveState() {
+  const state = [];
+  document.querySelectorAll('#page-ask .check-row').forEach(r => state.push(r.classList.contains('done') ? 1 : 0));
+  try { localStorage.setItem('iq-state', JSON.stringify(state)); } catch(e){}
+}
+function loadState() {
+  try {
+    const state = JSON.parse(localStorage.getItem('iq-state') || '[]');
+    document.querySelectorAll('#page-ask .check-row').forEach((r,i) => {
+      if (state[i]) { r.classList.add('done'); const cb = r.querySelector('input[type=checkbox]'); if (cb) cb.checked = true; }
+    });
+  } catch(e){}
+  updateProgress();
+}
+function resetAll() {
+  document.querySelectorAll('#page-ask .check-row').forEach(r => { r.classList.remove('done'); const cb = r.querySelector('input[type=checkbox]'); if (cb) cb.checked = false; });
+  try { localStorage.removeItem('iq-state'); } catch(e){}
+  updateProgress();
+}
+loadState();
+</script>
+</body>
+</html>
